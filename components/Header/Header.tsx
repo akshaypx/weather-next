@@ -11,7 +11,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <div className="w-full h-16 flex justify-between items-center px-4 py-2">
+    <div className="max-w-[900px] w-full h-16 flex justify-between items-center px-4 py-2">
       <h3 className="font-bold text-xl">Weather App</h3>
       <div className="flex gap-4 items-center">
         <HoverCard>
