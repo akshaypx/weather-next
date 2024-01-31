@@ -38,12 +38,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <Separator />
-          {children}
-          <Search />
-          <Separator />
-          <Footer />
+          <div className="flex h-screen flex-col">
+            <Header />
+            <Separator />
+            {children}
+            <div className="flex-1">
+              <Search />
+            </div>
+            <Separator />
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
