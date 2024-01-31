@@ -16,7 +16,7 @@ const Header = (props: Props) => {
       <div className="flex gap-4 items-center">
         <HoverCard>
           <HoverCardTrigger
-            className="font-bold underline cursor-pointer"
+            className=" cursor-pointer"
             href="https://github.com/akshaypx"
           >
             @akshaypx

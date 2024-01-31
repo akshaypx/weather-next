@@ -4,6 +4,9 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/Header/Header";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Separator } from "@/components/ui/separator";
+import Search from "@/components/Search/Search";
+import Footer from "@/components/Footer/Footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -36,7 +39,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
+          <Separator />
           {children}
+          <Search />
+          <Separator />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
