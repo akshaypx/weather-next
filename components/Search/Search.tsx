@@ -32,7 +32,7 @@ const Search = (props: Props) => {
       setShowSuggestion(true);
     }, 1000);
     return () => clearTimeout(delayInputTimeoutId);
-  }, [inputValue, 1000]);
+  }, [inputValue, 1000, props]);
 
   const handleClick = () => {
     props.handleClick();
@@ -53,14 +53,16 @@ const Search = (props: Props) => {
             />
             {showSuggestion && cityNames.length > 0 && (
               <div className="border border-primary-foreground p-1 border-t-0 rounded-md rounded-tl-none rounded-tr-none flex flex-col gap-1">
-                {cityNames.map((city) => (
+                {cityNames.map((city, _) => (
                   <option
+                    key={_}
                     value={city.name}
                     className="hover:bg-primary-foreground p-2 border border-primary-foreground rounded-md text-muted-foreground"
                     onClick={() => {
                       props.setCity(city.name);
                       setInputValue(city.name);
                       handleClick();
+                      setInputValue("");
                     }}
                   >
                     {(city.name + ", " + city.country).length > 45
