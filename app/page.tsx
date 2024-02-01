@@ -1,6 +1,5 @@
 "use client";
 import Search from "@/components/Search/Search";
-import { Separator } from "@/components/ui/separator";
 import { Weather, getWeatherByCity } from "@/queries/apiClient";
 import Image from "next/image";
 import { useState } from "react";
@@ -8,6 +7,7 @@ import { useState } from "react";
 export default function Home() {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState<Weather | null>(null);
+
   const handleClick = async () => {
     console.log(city);
     const data: Weather = await getWeatherByCity(city);
@@ -16,6 +16,7 @@ export default function Home() {
       setWeather(data);
     }
   };
+
   return (
     <>
       <Search setCity={setCity} city={city} handleClick={handleClick} />

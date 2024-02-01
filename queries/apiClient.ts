@@ -45,6 +45,16 @@ export interface Condition {
   code: number;
 }
 
+export interface Search {
+  id: number;
+  name: string;
+  region: string;
+  country: string;
+  lat: number;
+  lon: number;
+  url: string;
+}
+
 export async function getWeatherByCity(city: string) {
   try {
     const response = await fetch(
@@ -62,6 +72,30 @@ export async function getWeatherByCity(city: string) {
     }
     const data = await response.json();
     return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getSearchCityName(city: string) {
+  try {
+    if (city.length > 2) {
+      const response = await fetch(
+        `${API_BASE_URL}/search.json?q=${city}&key=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        console.log("API Error");
+        return null;
+      }
+      const data = await response.json();
+      return data;
+    } else return null;
   } catch (error) {
     console.log(error);
   }
